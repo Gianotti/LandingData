@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="12" fill="#10101a"/>
+  <g>
+    <polygon points="32,10 34,18 42,18 35,22 37,30 32,25 27,30 29,22 22,18 30,18" fill="#ffd700"/>
+    <polygon points="54,32 56,36 60,36 57,38 58,42 54,40 51,42 52,38 49,36 53,36" fill="#ffd700"/>
+    <polygon points="10,32 12,36 16,36 13,38 14,42 10,40 7,42 8,38 5,36 9,36" fill="#ffd700"/>
+    <polygon points="32,54 34,58 38,58 35,60 36,64 32,62 28,64 29,60 26,58 30,58" fill="#ffd700"/>
+  </g>
+  <text x="50%" y="56%" text-anchor="middle" fill="#667eea" font-size="22" font-family="Inter, Arial, sans-serif" font-weight="bold" dy=".3em">IA</text>
+</svg> 
