@@ -568,19 +568,17 @@
           <video src="video2.mp4" controls poster="alfa2.png" playsinline autoplay muted loop preload="auto" style="width:100%;max-width:700px;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.15);background:#000;"></video>
         </div>
       </div>
-      <div class="feature-card video-card">
-        <h3 class="feature-title">Mirá otra aplicación en acción</h3>
-        <p class="feature-description">
-          Descubre otra aplicación de nuestro sistema en una línea de producción diferente. Este video muestra cómo la tecnología de InDevelop se adapta a distintos entornos industriales, garantizando precisión y eficiencia en el conteo y monitoreo de productos.
-        </p>
-        <div class="video-container">
-          <video src="video2.mp4" playsinline autoplay muted loop controls style="width:100%;max-width:700px;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.15);background:#000;"></video>
-        </div>
-      </div>
-      <video width="500" playsinline autoplay muted loop controls>
-        <source src="video1.mp4">
-        </source>
-      </video>
+      <figure>
+        <video width="500" playsinline autoplay muted loop controls>
+          <source src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">
+          </source>
+          <p>
+            Your browser doesn't support HTML video. You can
+            <a href="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" download="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4">download the video</a> instead.
+          </p>
+        </video>
+        <figcaption>Basic video HTML with defined playsinline, autoplay, muted and loop</figcaption>
+      </figure>
       <style>
       .video-card {
         grid-column: 1 / -1;
