@@ -555,7 +555,13 @@
           Así funciona nuestro sistema de contabilización y monitoreo en tiempo real sobre la línea de producción. El video muestra cómo los alfajores son detectados y contabilizados automáticamente, generando métricas precisas y visualización instantánea.
         </p>
         <div class="video-container">
-          <video src="video1.mp4" controls poster="alfa1.png" preload="metadata" playsinline style="width:100%;max-width:700px;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.15);background:#000;"></video>
+          <video id="video1" src="video1.mp4" controls poster="alfa1.png" preload="metadata" playsinline webkit-playsinline style="width:100%;max-width:700px;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.15);background:#000;"></video>
+          <div class="video-overlay" id="overlay1">
+            <button class="play-button" onclick="playVideo('video1', 'overlay1')">
+              <span class="play-icon">▶</span>
+              <span class="play-text">Reproducir Video</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -565,7 +571,13 @@
           Descubre otra aplicación de nuestro sistema en una línea de producción diferente. Este video muestra cómo la tecnología de InDevelop se adapta a distintos entornos industriales, garantizando precisión y eficiencia en el conteo y monitoreo de productos.
         </p>
         <div class="video-container">
-          <video src="video2.mp4" controls poster="alfa2.png" preload="metadata" playsinline style="width:100%;max-width:700px;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.15);background:#000;"></video>
+          <video id="video2" src="video2.mp4" controls poster="alfa2.png" preload="metadata" playsinline webkit-playsinline style="width:100%;max-width:700px;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.15);background:#000;"></video>
+          <div class="video-overlay" id="overlay2">
+            <button class="play-button" onclick="playVideo('video2', 'overlay2')">
+              <span class="play-icon">▶</span>
+              <span class="play-text">Reproducir Video</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -582,9 +594,64 @@
         align-items: center;
         width: 100%;
         margin-top: 1.5rem;
+        position: relative;
       }
+      
+      .video-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.7);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 16px;
+        z-index: 10;
+        transition: opacity 0.3s ease;
+      }
+      
+      .video-overlay.hidden {
+        opacity: 0;
+        pointer-events: none;
+      }
+      
+      .play-button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 50px;
+        padding: 1rem 2rem;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+      }
+      
+      .play-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+      }
+      
+      .play-icon {
+        font-size: 1.2rem;
+      }
+      
+      .play-text {
+        font-family: 'Inter', sans-serif;
+      }
+      
       @media (max-width: 900px) {
         .video-card video { max-width: 100%; }
+        .play-button {
+          padding: 0.8rem 1.5rem;
+          font-size: 0.9rem;
+        }
       }
       </style>
     </div>
@@ -864,6 +931,50 @@
     // También inicializar cuando el DOM esté listo
     document.addEventListener('DOMContentLoaded', () => {
       setTimeout(initializeAnimations, 100);
+    });
+
+    // Función para reproducir video en móviles
+    function playVideo(videoId, overlayId) {
+      const video = document.getElementById(videoId);
+      const overlay = document.getElementById(overlayId);
+      
+      if (video && overlay) {
+        // Intentar reproducir el video
+        const playPromise = video.play();
+        
+        if (playPromise !== undefined) {
+          playPromise.then(() => {
+            // Video se reprodujo exitosamente
+            overlay.classList.add('hidden');
+          }).catch(error => {
+            // Error al reproducir, mostrar mensaje
+            console.log('Error reproduciendo video:', error);
+            alert('Para reproducir el video, toca el botón de reproducción en el reproductor de video.');
+          });
+        }
+      }
+    }
+
+    // Detectar cuando el video se pausa para mostrar el overlay nuevamente
+    document.addEventListener('DOMContentLoaded', function() {
+      const videos = document.querySelectorAll('video');
+      videos.forEach(video => {
+        video.addEventListener('pause', function() {
+          const overlayId = 'overlay' + video.id.replace('video', '');
+          const overlay = document.getElementById(overlayId);
+          if (overlay) {
+            overlay.classList.remove('hidden');
+          }
+        });
+        
+        video.addEventListener('play', function() {
+          const overlayId = 'overlay' + video.id.replace('video', '');
+          const overlay = document.getElementById(overlayId);
+          if (overlay) {
+            overlay.classList.add('hidden');
+          }
+        });
+      });
     });
 
     // Scroll animado para el botón 'Ver Demo'
