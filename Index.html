@@ -568,9 +568,16 @@
           <video src="video2.mp4" controls poster="alfa2.png" playsinline autoplay muted loop preload="auto" style="width:100%;max-width:700px;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.15);background:#000;"></video>
         </div>
       </div>
-      <video autoplay muted playsinline>
-        <source src="video1.mp4" type="video/mp4">
-      </video>
+      <div class="feature-card video-card">
+        <h3 class="feature-title">Mirá otra aplicación en acción</h3>
+        <p class="feature-description">
+          Descubre otra aplicación de nuestro sistema en una línea de producción diferente. Este video muestra cómo la tecnología de InDevelop se adapta a distintos entornos industriales, garantizando precisión y eficiencia en el conteo y monitoreo de productos.
+        </p>
+        <div class="video-container">
+          <video src="video2.mp4" autoplay muted playsinline type="video/mp4" style="width:100%;max-width:700px;border-radius:16px;box-shadow:0 4px 32px rgba(0,0,0,0.15);background:#000;"></video>
+        </div>
+      </div>
+
       <style>
       .video-card {
         grid-column: 1 / -1;
